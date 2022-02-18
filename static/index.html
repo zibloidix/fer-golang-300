@@ -13,24 +13,55 @@
 </head>
 <body>
     <div class="container" id="app">
-        <div class="row pt-3">
+        <!-- wellcome-to-service -->
+        <div class="row pt-3" id="wellcome-to-service" v-if="state == 'wellcome-to-service'">
+            <div class="col-12">
+                <div class="card shadow-sm mb-4 ">
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="py-4 border-bottom">Запись на приём к врачу</h2>
+                                <p class="py-2"></p>
+                                <p class="pt-4">Записать можно себя, ребёнка или другого человека.</p>
+                                <p class="pt-2">Проверьте данные полиса ОМС, выберите поликлинику, врача, дату и время посещения. Информация о записи будет доступна в личном кабинете</p>
+                                <p class="pt-2">Записаться можно к врачам из списка. Запись к профильному специалисту, на медицинское обследование или процедуру возможна по направлению, которое выдает терапевт или врач общей практики</p>
+                                <p class="pt-2">Запись на приём к врачу доступна только в регионе прикрепления к поликлинике</p>
+                                <p class="py-2"></p>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <div class="d-grid gap-2 col-6 mx-auto">
+                                    <button class="btn btn-primary" type="button">
+                                        <span>Начать</span>
+                                        <span>
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- get-patient-data -->
+        <div class="row pt-3" id="get-patient-data" v-if="state == 'get-patient-data'">
             <div class="col-12">
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         <div class="row border-bottom pb-3">
-                            <div class="col-10">
-                                <span v-if="state == 'load'">
-                                    LOAD
-                                </span>
-                                <span v-if="state == 'get-patient-data'">
-                                    <kbd class="px-2">1</kbd><span class="ps-2">Указать данные пациента</span>
-                                </span>
+                            <div class="col-12 text-primary">
+                                <kbd class="px-2 bg-primary">1</kbd><span class="ps-2 fw-bold">Указать данные пациента</span>
                             </div>
-                            <div class="col-2 text-end">
-                                <div class="spinner-grow spinner-grow-sm" role="status">
-                                    <span class="visually-hidden">Loading...</span>
-                                  </div>
-                            </div>
+                        </div>
+                        <div class="btn-group d-flex pt-3" role="group" aria-label="Выберете кого записать">
+                            <input type="radio" class="btn-check" name="forMeOrOther" id="forMe" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="forMe">Вызвать себе</label>
+                          
+                            <input type="radio" class="btn-check" name="forMeOrOther" id="forOther" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="forOther">Вызвать другому</label>
                         </div>
                         <div class="row pt-3">
                             <div class="col-12">
@@ -80,13 +111,21 @@
 
                         <div class="row">
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-primary" type="button">Далее</button>
-                              </div>
+                                <button class="btn btn-primary" type="button">
+                                    <span>Далее</span>
+                                    <span>
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    </span>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        <!-- get-mo-info-extended -->
+
         
     </div>
     

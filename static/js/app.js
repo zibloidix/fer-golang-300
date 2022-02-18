@@ -1,11 +1,16 @@
 document.addEventListener("DOMContentLoaded", runApp);
 
+const states = [
+    "wellcome-to-service",
+    "get-patient-data",
+    "get-mo-info-extended",
+]
 
 function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "get-patient-data"
+            state: "wellcome-to-service"
         }
     })
     window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
