@@ -17,8 +17,9 @@ function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "get-mo-info-extended",
-            hospitals: getHospitals()
+            state: "get-service-specs-info",
+            hospitals: getHospitals(),
+            services: getServices()
         },
         methods: {
             setScreenState(state) {
@@ -240,5 +241,22 @@ function getHospitals() {
             "Organization_Name": "Областной наркологический диспансер. Медосмотры",
             "Address_MO": "Южно-Сахалинск, ул.Горького, 12А"
         }
+    ]
+}
+
+function getServices() {
+    return [
+        {
+            "Service_Id": "1",
+            "Service_Name": "Врач-оториноларинголог"
+        },
+        {
+            "Service_Id": "2",
+            "Service_Name": "Врач-терапевт"
+        },
+        {
+            "Service_Id": "3",
+            "Service_Name": "Врач-стоматолог"
+        },
     ]
 }

@@ -214,8 +214,6 @@
                               </div>
                             </div>
                         </div>
-
-                        
                     </div>
                 </div>
             </div>
@@ -241,27 +239,19 @@
                                 <kbd class="px-2 bg-primary">3</kbd><span class="ps-2 fw-bold">Выбрать специальность врача</span>
                             </div>
                         </div>
-                        <div class="row">
+                        <div class="row py-4">
                             <div class="col-12">
-
-                                
-
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-6">
-                                <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-resource-info')">
-                                    <span>Далее</span>
-                                    <span>
-                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                    </span>
-                                </button>
+                                <div class="list-group">
+                                    <button type="button" 
+                                            class="list-group-item list-group-item-action py-3" 
+                                            v-for="service in services"
+                                            v-on:click="setScreenState('get-resource-info')">
+                                        <span>{{service.Service_Name}}</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    
-
                 </div>
             </div>
         </div>
