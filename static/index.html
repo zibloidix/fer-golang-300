@@ -42,6 +42,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-12 py-3 text-center">
+                                <button type="button" class="btn btn-link" v-on:click="setScreenState('appointment-history-list')">
+                                    <span class="pe-3">
+                                        История записей к врачу
+                                    </span>
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                          </svg>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,7 +137,7 @@
 
                         <div class="row">
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-mo-info-extended')">
                                     <span>Далее</span>
                                     <span>
                                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -135,6 +151,235 @@
         </div>
 
         <!-- get-mo-info-extended -->
+        <div class="row pt-4" id="get-mo-info-extended" v-if="state == 'get-mo-info-extended'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <kbd class="px-2 bg-primary">2</kbd><span class="ps-2 fw-bold">Выбрать медицинскую организацию</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-service-specs-info')">
+                        <span>Далее</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- get-service-specs-info -->
+        <div class="row pt-4" id="get-service-specs-info" v-if="state == 'get-service-specs-info'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <kbd class="px-2 bg-primary">3</kbd><span class="ps-2 fw-bold">Выбрать специальность врача</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-resource-info')">
+                        <span>Далее</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- get-resource-info -->
+        <div class="row pt-4" id="get-resource-info" v-if="state == 'get-resource-info'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <kbd class="px-2 bg-primary">4</kbd><span class="ps-2 fw-bold">Выбрать врача</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-schedule-info')">
+                        <span>Далее</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- get-schedule-info -->
+        <div class="row pt-4" id="get-schedule-info" v-if="state == 'get-schedule-info'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <kbd class="px-2 bg-primary">5</kbd><span class="ps-2 fw-bold">Выбрать дату и время</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('create-appointment')">
+                        <span>Далее</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- create-appointment -->
+        <div class="row pt-4" id="create-appointment" v-if="state == 'create-appointment'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <kbd class="px-2 bg-primary">6</kbd><span class="ps-2 fw-bold">Подтвердить выбор</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('appointment-full-details')">
+                        <span>Далее</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- appointment-full-details -->
+        <div class="row pt-4" id="appointment-full-details" v-if="state == 'appointment-full-details'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <span class="ps-2 fw-bold">Информация о записи к врачу</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('wellcome-to-service')">
+                        <span>На главную</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- appointment-history-list -->
+        <div class="row pt-4" id="appointment-history-list" v-if="state == 'appointment-history-list'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <span class="ps-2 fw-bold">История записей к врачу</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('wellcome-to-service')">
+                        <span>На главную</span>
+                        <span>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        </span>
+                    </button>
+
+                </div>
+            </div>
+        </div>
 
         
     </div>

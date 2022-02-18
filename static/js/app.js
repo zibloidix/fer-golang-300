@@ -4,13 +4,19 @@ const states = [
     "wellcome-to-service",
     "get-patient-data",
     "get-mo-info-extended",
+    "get-service-specs-info",
+    "get-resource-info",
+    "get-schedule-info",
+    "create-appointment",
+    "appointment-full-details",
+    "appointment-history-list"
 ]
 
 function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "wellcome-to-service"
+            state: "get-mo-info-extended"
         },
         methods: {
             setScreenState(state) {
@@ -22,7 +28,6 @@ function runApp() {
                     this.state = states[backStateIndex]
                 }
             }
-
         }
     })
     window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
