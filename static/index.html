@@ -170,15 +170,53 @@
                                 <kbd class="px-2 bg-primary">2</kbd><span class="ps-2 fw-bold">Выбрать медицинскую организацию</span>
                             </div>
                         </div>
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Адрес или название" aria-describedby="hospital-search-addon">
+                                    <span class="input-group-text" id="hospital-search-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </span>
+                                  </div>
+                            </div>
+                        </div>
+
+
+                        <div class="accordion accordion-flush" id="hospital-list">
+                            <div class="accordion-item" v-for="hospital in hospitals">
+                              <h2 class="accordion-header" v-bind:id="'header_' + hospital.MO_Id">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" v-bind:data-bs-target="'#target' + hospital.MO_Id" aria-expanded="true" v-bind:aria-controls="'#target' + hospital.MO_Id">
+                                  {{hospital.Organization_Name}}
+                                </button>
+                              </h2>
+                              <div v-bind:id="'target' + hospital.MO_Id" class="accordion-collapse collapse"  v-bind:aria-labelledby="'header_' + hospital.MO_Id" data-bs-parent="#hospital-list">
+                                <div class="accordion-body">
+                                    <div>
+                                        <div class="text-secondary">Адрес</div>
+                                        <div>{{hospital.Address_MO}}</div>
+                                    </div>
+                                    <div class="pt-3">
+                                        <div class="text-secondary">Телефон</div>
+                                        <div>{{hospital.Reg_Phone}}</div>
+                                    </div>
+                                    <div class="row pt-4 pb-3">
+                                        <div class="col-12 pt-1">
+                                            <div class="d-grid gap-2 col-6 mx-auto">
+                                                <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-service-specs-info')">
+                                                    <span>Выбрать</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                        
                     </div>
-
-                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-service-specs-info')">
-                        <span>Далее</span>
-                        <span>
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span>
-                    </button>
-
                 </div>
             </div>
         </div>
@@ -203,14 +241,26 @@
                                 <kbd class="px-2 bg-primary">3</kbd><span class="ps-2 fw-bold">Выбрать специальность врача</span>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-12">
+
+                                
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-resource-info')">
+                                    <span>Далее</span>
+                                    <span>
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-resource-info')">
-                        <span>Далее</span>
-                        <span>
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span>
-                    </button>
+                    
 
                 </div>
             </div>

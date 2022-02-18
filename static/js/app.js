@@ -12,11 +12,13 @@ const states = [
     "appointment-history-list"
 ]
 
+
 function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "get-mo-info-extended"
+            state: "get-mo-info-extended",
+            hospitals: getHospitals()
         },
         methods: {
             setScreenState(state) {
@@ -190,4 +192,53 @@ function xmlToJson(xml) {
       }
     }
     return obj;
+}
+
+
+// Mockdata
+function getHospitals() {
+    return [
+        {
+            "MO_Id": "194701",
+            "Reg_Phone": "(4242) 30-00-34",
+            "Organization_Name": "ГБУЗ Городская поликлиника №2 г.Южно-Сахалинска",
+            "Address_MO": "Южно-Сахалинск, пр-кт Мира, 85"
+        },
+        {
+            "MO_Id": "194702",
+            "Reg_Phone": "(4242) 70-50-91",
+            "Organization_Name": "ГБУЗ Городская поликлиника №2 г.Южно-Сахалинска Дальнее",
+            "Address_MO": "г.Южно-Сахалинск, с.Дальнее, ул.Новая, 20"
+        },
+        {
+            "MO_Id": "1943",
+            "Reg_Phone": "(4242) 72–21–09, (4242) 72–29–67",
+            "Organization_Name": "Сахалинский областной центр по профилактике и борьбе со СПИД",
+            "Address_MO": "Южно-Сахалинск, ул.Амурская, 53-А"
+        },
+        {
+            "MO_Id": "9494",
+            "Reg_Phone": "(4242) 510–710, (4242) 510–717, (4242) 510–718",
+            "Organization_Name": "Сахалинский областной кожно-венерологический диспансер",
+            "Address_MO": "Южно-Сахалинск, ул. Больничная, 46-Б"
+        },
+        {
+            "MO_Id": "65111101",
+            "Reg_Phone": "(4242) 72-84-99 - Регистратура",
+            "Organization_Name": "Городская травматологическая поликлиника",
+            "Address_MO": "Южно-Сахалинск, проспект Мира 56а/3"
+        },
+        {
+            "MO_Id": "78963",
+            "Reg_Phone": "(4242) 77-22-95 - Регистратура",
+            "Organization_Name": "Областная психиатрическая больница. Медосмотры",
+            "Address_MO": "Южно-Сахалинск, ул.Лермонтова, 110"
+        },
+        {
+            "MO_Id": "74125",
+            "Reg_Phone": "(4242) 76-08-82 - Регистратура",
+            "Organization_Name": "Областной наркологический диспансер. Медосмотры",
+            "Address_MO": "Южно-Сахалинск, ул.Горького, 12А"
+        }
+    ]
 }
