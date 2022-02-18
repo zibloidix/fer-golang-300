@@ -289,9 +289,6 @@
                             </div>
                         </div>
                     </div>
-
-                    
-
                 </div>
             </div>
         </div>
@@ -316,15 +313,19 @@
                                 <kbd class="px-2 bg-primary">5</kbd><span class="ps-2 fw-bold">Выбрать дату и время</span>
                             </div>
                         </div>
+                        <div class="row py-4">
+                            <div class="col-12">
+                                <div class="list-group">
+                                    <button type="button" 
+                                            class="list-group-item list-group-item-action py-3" 
+                                            v-for="slot in slots"
+                                            v-on:click="setScreenState('create-appointment')">
+                                        <span>{{slot.VisitTime}}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-
-                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('create-appointment')">
-                        <span>Далее</span>
-                        <span>
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span>
-                    </button>
-
                 </div>
             </div>
         </div>
