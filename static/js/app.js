@@ -17,9 +17,10 @@ function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "get-service-specs-info",
+            state: "get-resource-info",
             hospitals: getHospitals(),
-            services: getServices()
+            services: getServices(),
+            resources: getResources()
         },
         methods: {
             setScreenState(state) {
@@ -257,6 +258,27 @@ function getServices() {
         {
             "Service_Id": "3",
             "Service_Name": "Врач-стоматолог"
+        },
+    ]
+}
+
+function getResources() {
+    return [
+        {
+            "Resource_Id": "10",
+            "Resource_Name": "Хауз Грегори Михайлович"
+        },
+        {
+            "Resource_Id": "20",
+            "Resource_Name": "Робберт Чейз Иванович"
+        },
+        {
+            "Resource_Id": "30",
+            "Resource_Name": "Лиза Кадди Сергеевна"
+        },
+        {
+            "Resource_Id": "40",
+            "Resource_Name": "Эрик Форман Петрович"
         },
     ]
 }

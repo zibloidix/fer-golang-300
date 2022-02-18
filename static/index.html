@@ -276,14 +276,21 @@
                                 <kbd class="px-2 bg-primary">4</kbd><span class="ps-2 fw-bold">Выбрать врача</span>
                             </div>
                         </div>
+                        <div class="row py-4">
+                            <div class="col-12">
+                                <div class="list-group">
+                                    <button type="button" 
+                                            class="list-group-item list-group-item-action py-3" 
+                                            v-for="resource in resources"
+                                            v-on:click="setScreenState('get-schedule-info')">
+                                        <span>{{resource.Resource_Name}}</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-schedule-info')">
-                        <span>Далее</span>
-                        <span>
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span>
-                    </button>
+                    
 
                 </div>
             </div>
