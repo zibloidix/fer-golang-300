@@ -11,6 +11,18 @@ function runApp() {
         el: '#app',
         data: {
             state: "wellcome-to-service"
+        },
+        methods: {
+            setScreenState(state) {
+                this.state = state
+            },
+            setScreenStateBack() {
+                const backStateIndex = states.indexOf(this.state) - 1
+                if (backStateIndex >= 0) {
+                    this.state = states[backStateIndex]
+                }
+            }
+
         }
     })
     window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;

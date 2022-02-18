@@ -32,7 +32,7 @@
                         <div class="row pt-4">
                             <div class="col-12">
                                 <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button class="btn btn-primary" type="button">
+                                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('get-patient-data')">
                                         <span>Начать</span>
                                         <span>
                                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -47,8 +47,18 @@
         </div>
 
         <!-- get-patient-data -->
-        <div class="row pt-3" id="get-patient-data" v-if="state == 'get-patient-data'">
+        <div class="row pt-4" id="get-patient-data" v-if="state == 'get-patient-data'">
             <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
                 <div class="card shadow-sm mb-4">
                     <div class="card-body">
                         <div class="row border-bottom pb-3">
