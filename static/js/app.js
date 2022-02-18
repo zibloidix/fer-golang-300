@@ -17,7 +17,7 @@ function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "get-schedule-info",
+            state: "wellcome-to-service",
             hospitals: getHospitals(),
             services: getServices(),
             resources: getResources(),

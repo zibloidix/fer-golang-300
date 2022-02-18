@@ -350,14 +350,41 @@
                                 <kbd class="px-2 bg-primary">6</kbd><span class="ps-2 fw-bold">Подтвердить выбор</span>
                             </div>
                         </div>
+
+                        <div class="row py-4">
+                            <div class="col-12">
+                                <h3>ГБУЗ Городская поликлиника №2 г.Южно-Сахалинска</h3>
+                                <p>Адрес: Южно-Сахалинск, пр-кт Мира, 85</p>
+                                <div class="pt-3">
+                                    <div class="fw-bold">Специальность</div>
+                                    <div>Врач-терапевт</div>
+                                </div>
+
+                                <div class="pt-3">
+                                    <div class="fw-bold">Врач</div>
+                                    <div>Хауз Грегори Михайлович</div>
+                                </div>
+
+                                <div class="pt-3">
+                                    <div class="fw-bold">Дата и время</div>
+                                    <div>25 февраля 2022 года в 17:30, пятница</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row pt-2">
+                            <div class="d-grid gap-2 col-8 mx-auto py-4">
+                                <button class="btn btn-primary" type="button" v-on:click="setScreenState('appointment-full-details')">
+                                    <span>Записаться к врачу</span>
+                                    <span>
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
-                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('appointment-full-details')">
-                        <span>Далее</span>
-                        <span>
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span>
-                    </button>
+                    
 
                 </div>
             </div>
