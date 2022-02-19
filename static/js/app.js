@@ -197,7 +197,6 @@ const GetScheduleInfoRequest =
 
 // Отправка запроса CreateAppointment
 // await sendRequest("http://localhost:3001/fer", "CreateAppointment", executeTemplate(CreateAppointmentRequest, getCreateAppointmentData()))
-
 function getCreateAppointmentData() {
     return {
         slotID: "194701-59143-65959-61560-61620"
@@ -214,6 +213,27 @@ const CreateAppointmentRequest =
             <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
             <Slot_Id xmlns="">{{slotID}}</Slot_Id>
         </ns2:CreateAppointmentRequest>
+    </soapenv:Body>
+</soapenv:Envelope>`
+
+
+// Отправка запроса CancelAppointment
+// await sendRequest("http://localhost:3001/fer", "CancelAppointment", executeTemplate(CancelAppointmentRequest, getCancelAppointmentData()))
+function getCancelAppointmentData() {
+    return {
+        bookIDMis: "05BDE828-E9D7-11EB-A253-005056AFD4A3"
+    }
+}
+
+const CancelAppointmentRequest =
+`<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header>
+    </soapenv:Header>
+    <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="id-e8a0becb-8dbb-4876-81c5-f6094ad90929">
+        <ns2:CancelAppointmentRequest xmlns:ns2="http://www.rt-eu.ru/med/er/">
+            <Book_Id_Mis>{{bookIDMis}}</Book_Id_Mis>
+        </ns2:CancelAppointmentRequest>
     </soapenv:Body>
 </soapenv:Envelope>`
 
