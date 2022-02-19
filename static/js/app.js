@@ -160,10 +160,41 @@ const GetResourceInfoRequest =
     <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="id-e8a0becb-8dbb-4876-81c5-f6094ad90929">
         <ns2:GetResourceInfoRequest xmlns:ns2="http://www.rt-eu.ru/med/er/">
             <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
-            <ServiceSpec_Id xmlns="">541 194701</ServiceSpec_Id>
+            <ServiceSpec_Id xmlns="">{{serviceSpecID}}</ServiceSpec_Id>
         </ns2:GetResourceInfoRequest>
     </soapenv:Body>
 </soapenv:Envelope>`
+
+// Отправка запроса GetScheduleInfo
+// await sendRequest("http://localhost:3001/fer", "GetScheduleInfo", executeTemplate(GetScheduleInfoRequest, getScheduleInfoData()))
+function getScheduleInfoData() {
+    return {
+        resourceID: "15350401926.59143",
+        startDateRange: "2021-07-21",
+        endDateRange: "2021-08-04",
+        startTimeRange: "00:00:00",
+        endTimeRange: "23:59:00"
+    }
+}
+
+const GetScheduleInfoRequest = 
+`<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header>
+	</soapenv:Header>
+    <soapenv:Body wsu:Id="id-146d2871-c54e-43db-ad0b-e7d9e92d65d0" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <ns2:GetScheduleInfoRequest xmlns:ns2="http://www.rt-eu.ru/med/er/" xmlns:ns3="http://www.rt-eu.ru/med/er/v2_0" xmlns:ns4="http://smev.gosuslugi.ru/rev120315" xmlns:ns5="http://www.w3.org/2004/08/xop/include" xmlns:ns6="http://epgu.rtlabs.ru/equeue/ws/" xmlns:ns7="http://epgu.rtlabs.ru/equeue/ws/types/">
+            <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
+            <Resource_Id>{{resourceID}}</Resource_Id>
+            <StartDateRange>{{startDateRange}}</StartDateRange>
+            <EndDateRange>{{endDateRange}}</EndDateRange>
+            <StartTimeRange>{{startTimeRange}}</StartTimeRange>
+            <EndTimeRange>{{endTimeRange}}</EndTimeRange>
+        </ns2:GetScheduleInfoRequest>
+    </soapenv:Body>
+</soapenv:Envelope>`
+
+
 
 // From:   https://www.npmjs.com/package/uuid4
 // Author: Michael J. Ryan
