@@ -12,6 +12,7 @@
     <title>Сервис запись на прием к врачу</title>
 </head>
 <body>
+    <!-- MAIN CONTAINER: START -->
     <div class="container" id="app">
         <!-- wellcome-to-service -->
         <div class="row pt-3" id="wellcome-to-service" v-if="state == 'wellcome-to-service'">
@@ -490,15 +491,42 @@
                                 <span class="ps-2 fw-bold">История записей к врачу</span>
                             </div>
                         </div>
+
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <div class="input-group pb-2 mb-3">
+                                    <input type="text" class="form-control" placeholder="Поиск" aria-describedby="appointment-search-addon">
+                                    <span class="input-group-text" id="appointment-search-addon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                        </svg>
+                                    </span>
+                                  </div>
+                            </div>
+                        </div>
+
+                        <div class="row py-3 border-top" v-for="appointment in appointments"  v-on:click="setScreenState('appointment-full-details')">
+                            <div class="col-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar3" viewBox="0 0 16 16">
+                                    <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+                                    <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                                </svg>
+                            </div>
+                            <div class="col-11">
+                                <!-- <div class="text-truncate text-success" v-if="appointment.isActive">{{appointment.title}}</div> -->
+                                <div class="text-truncate fw-bold">{{appointment.title}}</div>
+                                <div>{{appointment.date}}</div>
+                                <div class="text-secondary">{{appointment.hospital}}</div>
+                            </div>
+                        </div>
+
+                        <div class="row border-top pt-4 pb-3">
+                            <div class="col-12 text-center">
+                                <button type="button" class="btn btn-link">Показать больше</button>
+                            </div>
+                        </div>
                         
                     </div>
-
-                    <button class="btn btn-primary" type="button" v-on:click="setScreenState('wellcome-to-service')">
-                        <span>На главную</span>
-                        <span>
-                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        </span>
-                    </button>
 
                 </div>
             </div>
@@ -632,8 +660,6 @@
             </div>
         </div>
 
-        
-    </div>
-    
+    </div><!-- MAIN CONTAINER: START -->
 </body>
 </html>
