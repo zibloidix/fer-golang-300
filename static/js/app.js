@@ -15,11 +15,14 @@ const states = [
 ]
 
 
-function runApp() {
+async function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
             state: "wellcome-to-service",
+            recordData: {
+                patientID: await getPatientID()
+            },
             hospitals: getHospitals(),
             services: getServices(),
             resources: getResources(),
@@ -38,7 +41,10 @@ function runApp() {
             }
         }
     })
-    // window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
+    if (window.__VUE_DEVTOOLS_GLOBAL_HOOK__) {
+        window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
+    }
+    
 }
 
 async function sendRequest(url, action, request) {
@@ -648,4 +654,9 @@ function getAppointmentHistoryList() {
             "hospital": "ГБУЗ Городская поликлиника №2 г.Южно-Сахалинска"
         }
     ]
+}
+
+async function getPatientID() {
+    const resp = await sendRequest("http://localhost:3001/fer", "GetPatientInfo", executeTemplate(GetPatientInfoRequest, getPatientData()))
+    return resp["soapenv:Envelope"]["soapenv:Body"]["er:GetPatientInfoResponse"].Patient_Id
 }
