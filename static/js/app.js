@@ -121,19 +121,27 @@ const GetMOInfoExtendedRequest =
     </soapenv:Body>
 </soapenv:Envelope>`
 
-const CreateHouseCallRequest =
-`<?xml version="1.0" encoding="UTF-8" ?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:s='http://www.w3.org/2001/XMLSchema' xmlns:wsa='http://www.w3.org/2005/08/addressing'>
-    <SOAP-ENV:Header>
-        <wsa:MessageID>urn:uuid:{{MessageID}}</wsa:MessageID>
-    </SOAP-ENV:Header>
-    <SOAP-ENV:Body>
-        <CreateHouseCallRequest xmlns="http://www.rt-eu.ru/med/hc/">
-            <Session_ID xmlns="">{{SessionID}}</Session_ID>
-            <Slot_Id xmlns="">{{SlotID}}</Slot_Id>
-        </CreateHouseCallRequest>
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>`
+
+// Отправка запроса GetServiceSpecsInfo
+// await sendRequest("http://localhost:3001/fer", "GetServiceSpecsInfo", executeTemplate(GetServiceSpecsInfoRequest, getServiceSpecsInfoData()))
+function getServiceSpecsInfoData() {
+    return {
+        moID: "194701"
+    }
+}
+
+const GetServiceSpecsInfoRequest =
+`<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header>
+    </soapenv:Header>
+    <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="id-e8a0becb-8dbb-4876-81c5-f6094ad90929">
+        <ns2:GetServiceSpecsInfoRequest xmlns:ns2="http://www.rt-eu.ru/med/er/">
+            <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
+            <MO_Id xmlns="">{{moID}}</MO_Id>
+        </ns2:GetServiceSpecsInfoRequest>
+    </soapenv:Body>
+</soapenv:Envelope>`
 
 const CancelHouseCallRequest = 
 `<?xml version="1.0" encoding="UTF-8" ?>
