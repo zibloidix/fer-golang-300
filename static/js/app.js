@@ -68,48 +68,40 @@ function executeTemplate(tmp, data) {
             .replaceAll('  ', '')
             .replaceAll('\n', '')
 }
-  
-const GetValidatePatientInfoRequest = 
+
+// Отправка запроса GetPatientInfo
+// await sendRequest("http://localhost:3001/fer", "GetPatientInfo", executeTemplate(GetPatientInfoRequest, getPatientData()))
+function getPatientData() {
+    return {
+        oms: "6555320880000082",
+        snils: "077-507-507 77",
+        firstName: "Брюс",
+        lastName: "Виллис",
+        middleName: "Герой-Боевиков",
+        birthDate: "1976-04-07",
+        sex: "M"
+    }
+}
+
+const GetPatientInfoRequest = 
 `<?xml version='1.0' encoding='UTF-8'?>
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
-    <soapenv:Body>
-        <ns2:GetValidatePatientInfoRequest xmlns:ns2="http://www.rt-eu.ru/med/hc/">
-            <Session_ID>{{SessionID}}</Session_ID>
-            <Patient_Data>
-                <OMS_Number>{{Patient.OMSNumber}}</OMS_Number>
-                <OMS_Series>{{Patient.OMSSeries}}</OMS_Series>
-                <SNILS>{{Patient.SNILS}}</SNILS>
-                <First_Name>{{Patient.FirstName}}</First_Name>
-                <Last_Name>{{Patient.LastName}}</Last_Name>
-                <Middle_Name>{{Patient.MiddleName}}</Middle_Name>
-                <Birth_Date>{{Patient.BirthDate}}</Birth_Date>
-                <Sex>{{Patient.Sex}}</Sex>
+    <soapenv:Header></soapenv:Header>
+    <soapenv:Body wsu:Id="id-1b4bd661-8dfc-4db2-8fa9-7281a709b7bf" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+        <ns2:GetPatientInfoRequest xmlns:ns2="http://www.rt-eu.ru/med/er/" xmlns:ns3="http://www.rt-eu.ru/med/er/v2_0" xmlns:ns4="http://smev.gosuslugi.ru/rev120315" xmlns:ns5="http://www.w3.org/2004/08/xop/include" xmlns:ns6="http://epgu.rtlabs.ru/equeue/ws/" xmlns:ns7="http://epgu.rtlabs.ru/equeue/ws/types/">
+            <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
+            <Patient_Data xmlns="">
+                <OMS_Number>{{oms}}</OMS_Number>
+                <SNILS>{{snils}}</SNILS>
+                <First_Name>{{firstName}}</First_Name>
+                <Last_Name>{{lastName}}</Last_Name>
+                <Middle_Name>{{middleName}}</Middle_Name>
+                <Birth_Date>{{birthDate}}</Birth_Date>
+                <Sex>{{sex}}</Sex>
+                <Email xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
+                <Phone xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:nil="true"/>
             </Patient_Data>
-            <Applicant_Data>
-                <Last_Name>{{Applicant.LastName}}</Last_Name>
-                <First_Name>{{Applicant.FirstName}}</First_Name>
-                <Middle_Name>{{Applicant.MiddleName}}</Middle_Name>
-                <SNILS>{{Applicant.SNILS}}</SNILS>
-                <Mobile_Phone>{{Applicant.Phone}}</Mobile_Phone>
-                <Email>{{Applicant.Email}}</Email>
-            </Applicant_Data>
-            <Cod_Kladr_Fias>{{CodKladrFias}}</Cod_Kladr_Fias>
-            <Address_Str>{{AddressStr}}</Address_Str>
-            <Adr_Region>{{Region}}</Adr_Region>
-            <Adr_Area></Adr_Area>
-            <Adr_City>{{City}}</Adr_City>
-            <Adr_City_Area></Adr_City_Area>
-            <Adr_Place></Adr_Place>
-            <Adr_Street>{{Street}}</Adr_Street>
-            <Adr_Additional_Area></Adr_Additional_Area>
-            <Adr_Additional_Street></Adr_Additional_Street>
-            <Adr_House>{{House}}</Adr_House>
-            <Adr_Housing></Adr_Housing>
-            <Adr_Structure></Adr_Structure>
-            <Adr_Apartment>{{Apartment}}</Adr_Apartment>
-            <Adr_Post_Index>{{PostIndex}}</Adr_Post_Index>
-            <Reason_Task>{{ReasonTask}}</Reason_Task>
-        </ns2:GetValidatePatientInfoRequest>
+        </ns2:GetPatientInfoRequest>
     </soapenv:Body>
 </soapenv:Envelope>`
 
