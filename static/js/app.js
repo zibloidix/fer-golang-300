@@ -17,11 +17,12 @@ function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "wellcome-to-service",
+            state: "appointment-full-details",
             hospitals: getHospitals(),
             services: getServices(),
             resources: getResources(),
-            slots: getSlots()
+            slots: getSlots(),
+            appointment: getAppoinment()
         },
         methods: {
             setScreenState(state) {
@@ -506,4 +507,10 @@ function getSlots() {
         s.VisitTime = new Date(s.VisitTime)
         return s
     })
+}
+
+function getAppoinment() {
+    return {
+
+    }
 }
