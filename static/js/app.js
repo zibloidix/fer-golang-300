@@ -143,18 +143,27 @@ const GetServiceSpecsInfoRequest =
     </soapenv:Body>
 </soapenv:Envelope>`
 
-const CancelHouseCallRequest = 
-`<?xml version="1.0" encoding="UTF-8" ?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:s='http://www.w3.org/2001/XMLSchema' xmlns:wsa='http://www.w3.org/2005/08/addressing'>
-    <SOAP-ENV:Header>
-        <wsa:MessageID>urn:uuid:{{MessageID}}</wsa:MessageID>
-    </SOAP-ENV:Header>
-    <SOAP-ENV:Body>
-        <ns2:CancelHouseCallRequest xmlns:ns6="http://epgu.rtlabs.ru/equeue/ws/types/" xmlns:ns5="http://epgu.rtlabs.ru/equeue/ws/" xmlns:ns2="http://www.rt-eu.ru/med/hc/" xmlns:ns4="http://www.w3.org/2004/08/xop/include" xmlns:ns3="http://smev.gosuslugi.ru/rev120315">
-            <HC_Id_Rmis>{{RmisID}}</HC_Id_Rmis>
-        </ns2:CancelHouseCallRequest>
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>`
+
+// Отправка запроса GetResourceInfo
+// await sendRequest("http://localhost:3001/fer", "GetResourceInfo", executeTemplate(GetResourceInfoRequest, getResourceInfoData()))
+function getResourceInfoData() {
+    return {
+        serviceSpecID: "541 194701"
+    }
+}
+
+const GetResourceInfoRequest = 
+`<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header>
+    </soapenv:Header>
+    <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="id-e8a0becb-8dbb-4876-81c5-f6094ad90929">
+        <ns2:GetResourceInfoRequest xmlns:ns2="http://www.rt-eu.ru/med/er/">
+            <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
+            <ServiceSpec_Id xmlns="">541 194701</ServiceSpec_Id>
+        </ns2:GetResourceInfoRequest>
+    </soapenv:Body>
+</soapenv:Envelope>`
 
 // From:   https://www.npmjs.com/package/uuid4
 // Author: Michael J. Ryan
