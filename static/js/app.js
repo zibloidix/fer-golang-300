@@ -23,7 +23,7 @@ async function runApp() {
             recordData: {
                 patientID: await getPatientID()
             },
-            hospitals: getHospitals(),
+            hospitals: await getHospitals(),
             services: getServices(),
             resources: getResources(),
             slots: getSlots(),
@@ -290,7 +290,7 @@ function xmlToJson(xml) {
 
 
 // Mockdata
-function getHospitals() {
+function getHospitalsMock() {
     return [
         {
             "MO_Id": "194701",
@@ -659,4 +659,18 @@ function getAppointmentHistoryList() {
 async function getPatientID() {
     const resp = await sendRequest("http://localhost:3001/fer", "GetPatientInfo", executeTemplate(GetPatientInfoRequest, getPatientData()))
     return resp["soapenv:Envelope"]["soapenv:Body"]["er:GetPatientInfoResponse"].Patient_Id
+}
+
+async function getHospitals() {
+    const resp = await sendRequest("http://localhost:3001/fer", "GetMOInfoExtended", GetMOInfoExtendedRequest)
+    const hospitals = resp["soapenv:Envelope"]["soapenv:Body"]["er:GetMOInfoExtendedResponse"].ListMO.MO.map( m => {
+        return {
+            MO_Id: m.MO_Id,
+            Reg_Phone: m.MO_Phone,
+            Organization_Name: m.MO_Name,
+            Reg_Phone: m.MO_Phone,
+            Address_MO: m.MO_Address
+        }
+    })
+    return hospitals
 }
