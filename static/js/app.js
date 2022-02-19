@@ -19,7 +19,7 @@ function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "appointment-history-list",
+            state: "wellcome-to-service",
             hospitals: getHospitals(),
             services: getServices(),
             resources: getResources(),
@@ -38,7 +38,7 @@ function runApp() {
             }
         }
     })
-    window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
+    // window.__VUE_DEVTOOLS_GLOBAL_HOOK__.Vue = app.constructor;
 }
 
 async function sendRequest(url, action, request) {
