@@ -405,7 +405,6 @@
                                 <span class="ps-2 fw-bold">Информация о записи к врачу</span>
                             </div>
                         </div>
-                        
                         <div class="row pt-4">
                             <div class="col-12">
                                 <h3>
@@ -415,10 +414,9 @@
                                 </h3>
                             </div>
                         </div>
-
                         <div class="row py-4 border-bottom">
                             <div class="col-6 d-grid gap-2 mx-auto ">
-                                <button type="button" class="btn btn-outline-secondary">Отменить</button>
+                                <button type="button" class="btn btn-outline-secondary" v-on:click="setScreenState('cancel-appointment')">Отменить</button>
                             </div>
                             <div class="col-6 d-grid gap-2 mx-auto ">
                                 <button type="button" class="btn btn-outline-primary">В календарь</button>
@@ -456,7 +454,7 @@
                         </div>
 
                     </div>
-                    <div class="card-footer text-center">
+                    <div class="card-footer py-3 text-center">
                         <button type="button" class="btn btn-link" v-on:click="setScreenState('appointment-history-list')">
                             <span class="pe-3">
                                 История записей к врачу
@@ -502,6 +500,135 @@
                         </span>
                     </button>
 
+                </div>
+            </div>
+        </div>
+
+        <!-- cancel-appointment -->
+        <div class="row pt-4" id="cancel-appointment" v-if="state == 'cancel-appointment'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-4">
+                            <div class="col-12 text-primary">
+                                <span class="ps-2 fw-bold">Отмена записи к врачу</span>
+                            </div>
+                        </div>
+                        <div class="row py-4">
+                            <div class="col-12 py-4 text-center">
+                                <h4 class="py-4">Вы уверены, что хотите отменить запись на приём?</h4>
+                            </div>
+                        </div>
+                        <div class="row  pt-3 pb-2">
+                            <div class="col-6 d-grid gap-2 mx-auto">
+                                <button type="button" 
+                                        class="btn btn-primary" 
+                                        v-on:click="setScreenState('appointment-canceled-full-details')">Отменить запись</button>
+                            </div>
+                        </div>
+                        <div class="row  pt-2 pb-2">
+                            <div class="col-6 d-grid gap-2 mx-auto">
+                                <button type="button" 
+                                        class="btn btn-outline-primary" 
+                                        v-on:click="setScreenState('wellcome-to-service')">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- appointment-canceled-full-details -->
+        <div class="row pt-4" id="appointment-canceled-full-details" v-if="state == 'appointment-canceled-full-details'">
+            <div class="col-12">
+                <div class="row pb-4">
+                    <div class="col-12" v-on:click="setScreenStateBack()">
+                        <span class="pe-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                            </svg>
+                        </span>
+                        <span ps-4>Назад</span>
+                    </div>
+                </div>
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <div class="row border-bottom pb-3">
+                            <div class="col-12 text-primary">
+                                <span class="ps-2 fw-bold">Информация о записи к врачу</span>
+                            </div>
+                        </div>
+                        <div class="row pt-4">
+                            <div class="col-12">
+                                <h3>
+                                    <span class="pe-2">
+                                        Запись к врачу №123456
+                                    </span>
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="row py-4 border-bottom">
+                            <div class="col-6 d-grid gap-2 mx-auto ">
+                                <button type="button" class="btn btn-outline-secondary" v-on:click="setScreenState('cancel-appointment')">Отменить</button>
+                            </div>
+                            <div class="col-6 d-grid gap-2 mx-auto ">
+                                <button type="button" class="btn btn-outline-primary">В календарь</button>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="pt-3">
+                                    <div class="fw-bold">Дата и время</div>
+                                    <div>25 февраля 2022 года в 17:30, пятница</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="pt-3">
+                                    <div class="text-secondary">Врач-терапевт</div>
+                                    <div>Хауз Грегори Михайлович</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row pt-4 border-top">
+                            <div class="col-12">
+                                <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/gorodskaya_poliklinika_2/1054357597/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Городская поликлиника № 2</a><a href="https://yandex.ru/maps/80/yuzhno-sakhalinsk/category/adult_outpatient_clinic/184106014/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Поликлиника для взрослых в Южно‑Сахалинске</a><iframe src="https://yandex.ru/map-widget/v1/-/CCU5Z4wc3D" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+                            </div>
+                        </div>
+
+                        <div class="row  pt-3 pb-2">
+                            <div class="col-6 d-grid gap-2 mx-auto">
+                                <button type="button" 
+                                        class="btn btn-primary" 
+                                        v-on:click="setScreenState('wellcome-to-service')">На главную</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="card-footer py-3 text-center">
+                        <button type="button" class="btn btn-link" v-on:click="setScreenState('appointment-history-list')">
+                            <span class="pe-3">
+                                История записей к врачу
+                            </span>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                  </svg>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

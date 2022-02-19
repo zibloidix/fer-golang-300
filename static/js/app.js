@@ -9,7 +9,9 @@ const states = [
     "get-schedule-info",
     "create-appointment",
     "appointment-full-details",
-    "appointment-history-list"
+    "appointment-history-list",
+    "cancel-appointment",
+    "appointment-canceled-full-details"
 ]
 
 
@@ -17,7 +19,7 @@ function runApp() {
     const app = new Vue({
         el: '#app',
         data: {
-            state: "appointment-full-details",
+            state: "cancel-appointment",
             hospitals: getHospitals(),
             services: getServices(),
             resources: getResources(),
