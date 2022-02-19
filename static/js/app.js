@@ -25,7 +25,7 @@ async function runApp() {
             },
             hospitals: await getHospitals(),
             services: await getServices(),
-            resources: getResources(),
+            resources: await getResources(),
             slots: getSlots(),
             appointments: getAppointmentHistoryList()
         },
@@ -354,7 +354,7 @@ function getServicesMock() {
     ]
 }
 
-function getResources() {
+function getResourcesMock() {
     return [
         {
             "Resource_Id": "10",
@@ -686,3 +686,8 @@ async function getServices() {
     return services
 }
 
+async function getResources() {
+    const resp = await sendRequest("http://localhost:3001/fer", "GetResourceInfo", executeTemplate(GetResourceInfoRequest, getResourceInfoData()))
+    const resources = resp["soapenv:Envelope"]["soapenv:Body"]["er:GetResourceInfoResponse"].ListResource.Resource
+    return resources
+}
