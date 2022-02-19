@@ -24,7 +24,7 @@ async function runApp() {
                 patientID: await getPatientID()
             },
             hospitals: await getHospitals(),
-            services: getServices(),
+            services: await getServices(),
             resources: getResources(),
             slots: getSlots(),
             appointments: getAppointmentHistoryList()
@@ -337,7 +337,7 @@ function getHospitalsMock() {
     ]
 }
 
-function getServices() {
+function getServicesMock() {
     return [
         {
             "Service_Id": "1",
@@ -674,3 +674,15 @@ async function getHospitals() {
     })
     return hospitals
 }
+
+async function getServices() {
+    const resp = await sendRequest("http://localhost:3001/fer", "GetServiceSpecsInfo", executeTemplate(GetServiceSpecsInfoRequest, getServiceSpecsInfoData()))
+    const services = resp["soapenv:Envelope"]["soapenv:Body"]["er:GetServiceSpecsInfoResponse"].ListServiceSpecs.ServiceSpec.map( s => {
+        return {
+            Service_Id: s.ServiceSpec_Id,
+            Service_Name: s.ServiceSpec_Name
+        }
+    })
+    return services
+}
+
