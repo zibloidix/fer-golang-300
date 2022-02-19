@@ -105,21 +105,21 @@ const GetPatientInfoRequest =
     </soapenv:Body>
 </soapenv:Envelope>`
 
-const GetHouseCallScheduleInfoRequest = 
-`<?xml version="1.0" encoding="UTF-8" ?>
-<SOAP-ENV:Envelope xmlns:SOAP-ENV='http://schemas.xmlsoap.org/soap/envelope/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:s='http://www.w3.org/2001/XMLSchema' xmlns:wsa='http://www.w3.org/2005/08/addressing'>
-    <SOAP-ENV:Header>
-        <wsa:MessageID>urn:uuid:{{MessageID}}</wsa:MessageID>
-    </SOAP-ENV:Header>
-    <SOAP-ENV:Body>
-        <GetHouseCallScheduleInfoRequest xmlns="http://www.rt-eu.ru/med/hc/">
-            <Session_ID xmlns="">{{SessionID}}</Session_ID>
-            <Resource_Id xmlns="">{{ResourceID}}</Resource_Id>
-            <StartDateRange xmlns="">{{StartDate}}</StartDateRange>
-            <EndDateRange xmlns="">{{EndDate}}</EndDateRange>
-        </GetHouseCallScheduleInfoRequest>
-    </SOAP-ENV:Body>
-</SOAP-ENV:Envelope>`
+
+
+// Отправка запроса GetMOInfoExtended
+// await sendRequest("http://localhost:3001/fer", "GetMOInfoExtended", GetMOInfoExtendedRequest)
+const GetMOInfoExtendedRequest = 
+`<?xml version='1.0' encoding='UTF-8'?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header>
+    </soapenv:Header>
+    <soapenv:Body xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" wsu:Id="id-e8a0becb-8dbb-4876-81c5-f6094ad90929">
+        <ns2:GetMOInfoExtendedRequest xmlns:ns2="http://www.rt-eu.ru/med/er/">
+            <Session_ID>7d7c0110-d97b-476a-8f9e-008cbb903335</Session_ID>
+        </ns2:GetMOInfoExtendedRequest>
+    </soapenv:Body>
+</soapenv:Envelope>`
 
 const CreateHouseCallRequest =
 `<?xml version="1.0" encoding="UTF-8" ?>
