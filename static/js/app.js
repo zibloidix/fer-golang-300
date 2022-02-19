@@ -20,14 +20,13 @@ async function runApp() {
         el: '#app',
         data: {
             state: "wellcome-to-service",
-            recordData: {
-                patientID: await getPatientID()
-            },
+            patientID: await getPatientID(),
             hospitals: await getHospitals(),
             services: await getServices(),
             resources: await getResources(),
             slots: await getSlots(),
-            appointments: getAppointmentHistoryList()
+            appointments: getAppointmentHistoryList(),
+            appointmentCreated: await getCreateAppointment()
         },
         methods: {
             setScreenState(state) {
@@ -699,6 +698,20 @@ async function getSlots() {
         return s
     })
     return slots
+}
+
+async function getCreateAppointment() {
+    const resp = await sendRequest("http://localhost:3001/fer", "CreateAppointment", executeTemplate(CreateAppointmentRequest, getCreateAppointmentData()))
+    const slot = resp["soapenv:Envelope"]["soapenv:Body"]["er:CreateAppointmentResponse"]
+    const { Book_Id_Mis, Comment, Session_ID, Slot_Id, Status_Code, VisitTime } = slot
+    return {
+        Book_Id_Mis,
+        Comment,
+        Session_ID,
+        Slot_Id,
+        Status_Code,
+        VisitTime
+    }
 }
 
 function dateToString(srcDate) {
