@@ -26,7 +26,7 @@ async function runApp() {
             hospitals: await getHospitals(),
             services: await getServices(),
             resources: await getResources(),
-            slots: getSlots(),
+            slots: await getSlots(),
             appointments: getAppointmentHistoryList()
         },
         methods: {
@@ -375,7 +375,7 @@ function getResourcesMock() {
     ]
 }
 
-function getSlots() {
+function getSlotsMock() {
     return [
         {
             "Slot_Id": "194701-78825-66165-60300-61200",
@@ -691,3 +691,22 @@ async function getResources() {
     const resources = resp["soapenv:Envelope"]["soapenv:Body"]["er:GetResourceInfoResponse"].ListResource.Resource
     return resources
 }
+
+async function getSlots() {
+    const resp = await sendRequest("http://localhost:3001/fer", "GetScheduleInfo", executeTemplate(GetScheduleInfoRequest, getScheduleInfoData()))
+    const slots = resp["soapenv:Envelope"]["soapenv:Body"]["er:GetScheduleInfoResponse"].Schedule.Slots.map(s => {
+        s.VisitTime = dateToString( s.VisitTime )
+        return s
+    })
+    return slots
+}
+
+function dateToString(srcDate) {
+    const date = new Date(srcDate);
+    const year = date.getFullYear();
+    const month = `${date.getMonth() + 1}`.padStart(2,0);
+    const day = `${date.getDate()}`.padStart(2,0);
+    const hh = date.getHours()
+    const mm = date.getMinutes()
+    return `${day}.${month}.${year} ${hh}:${mm}:00`;
+  }
