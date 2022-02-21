@@ -30,7 +30,8 @@ async function runApp() {
             resources: await getResources(),
             slots: await getSlots(),
             appointments: getAppointmentHistoryList(),
-            appointmentCreated: await getCreateAppointment()
+            appointmentCreated: await getCreateAppointment(),
+            appointmentCanceled: await getCancelAppointment()
         },
         methods: {
             setScreenState(state) {
@@ -404,6 +405,17 @@ async function getCreateAppointment() {
         Slot_Id,
         Status_Code,
         VisitTime
+    }
+}
+
+async function getCancelAppointment() {
+    const resp = await sendRequest(ENDPOINT, "CancelAppointment", executeTemplate(CancelAppointmentRequest, getCancelAppointmentData()))
+    const slot = resp["soapenv:Envelope"]["soapenv:Body"]["er:CancelAppointmentResponse"]
+    const { Book_Id_Mis, Comment, Status_Code } = slot
+    return {
+        Book_Id_Mis, 
+        Comment, 
+        Status_Code
     }
 }
 
